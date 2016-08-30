@@ -41,8 +41,10 @@ public class HomeActivity extends AppCompatActivity
         });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
-        View inflatedLayout= inflater.inflate(R.layout.activity_home, null, false);
+        LayoutInflater inflator = (LayoutInflater) this .getSystemService(LAYOUT_INFLATER_SERVICE);
+
+       // LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
+        View inflatedLayout= inflator.inflate(R.layout.activity_home, null, false);
 //        containerDestacado.addView(inflatedLayout);
         initProgressbar(inflatedLayout);
 
@@ -65,6 +67,7 @@ public class HomeActivity extends AppCompatActivity
         }
 
     }
+
 
     public void hideSDProgress() {
 
