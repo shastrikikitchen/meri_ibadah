@@ -2,7 +2,7 @@
     >
     <item android:id="@android:id/progress">
         <rotate
-            android:drawable="@drawable/li_1"
+            android:drawable="@drawable/li_3"
             />
     </item>
     <item
