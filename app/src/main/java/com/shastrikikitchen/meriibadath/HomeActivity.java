@@ -3,6 +3,7 @@ package com.shastrikikitchen.meriibadath;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,10 +13,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private Button test_me;
+    protected ProgressBar progressBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +41,12 @@ public class HomeActivity extends AppCompatActivity
         });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
+        View inflatedLayout= inflater.inflate(R.layout.activity_home, null, false);
+//        containerDestacado.addView(inflatedLayout);
+        initProgressbar(inflatedLayout);
+
+        init();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
@@ -41,6 +54,43 @@ public class HomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+    protected void initProgressbar(View view) {
+        progressBar = (ProgressBar) view.findViewById(R.id.materialLoader);
+    }
+    public void showSDProgrss() {
+
+        if (progressBar != null && !progressBar.isShown()) {
+            progressBar.setVisibility(View.VISIBLE);
+        }
+
+    }
+
+    public void hideSDProgress() {
+
+        if (progressBar != null) {
+            progressBar.setVisibility(View.INVISIBLE);
+        }
+    }
+    public ProgressBar getProgressBar() {
+        return progressBar;
+    }
+
+
+    private void init() {
+        test_me = (Button) findViewById(R.id.test_me);
+        test_me.setOnClickListener(new View.OnClickListener() {
+            int count =0;
+            @Override
+            public void onClick(View v) {
+                if(count%2==0){
+                    showSDProgrss();
+                }else {
+                    hideSDProgress();
+                }
+
+            }
+        });
     }
 
     @Override

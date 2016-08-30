@@ -18,7 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".QuranCure.DiseaseCureListActivity"></activity>
+        <activity android:name=".QuranCure.DiseaseCureListActivity" />
+        <activity android:name=".ChatWIthAlim.ChatWithAlimActivity"></activity>
     </application>
 
 </manifest>
