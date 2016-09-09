@@ -1,4 +1,4 @@
-package com.shastrikikitchen.meriibadath;
+package com.shastrikikitchen.meriibadath.Home;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -17,44 +17,28 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.shastrikikitchen.meriibadath.R;
 
-public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,NavigationDrawerActivity {
     private Button test_me;
     protected ProgressBar progressBar;
+    DrawerLayout drawer;
+    FloatingActionButton fab;
+    ActionBarDrawerToggle toggle;
+    Toolbar toolbar;
+    NavigationView navigationView;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        LayoutInflater inflator = (LayoutInflater) this .getSystemService(LAYOUT_INFLATER_SERVICE);
-
-       // LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
-        View inflatedLayout= inflator.inflate(R.layout.activity_home, null, false);
-//        containerDestacado.addView(inflatedLayout);
-        initProgressbar(inflatedLayout);
-
         init();
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
     protected void initProgressbar(View view) {
@@ -82,6 +66,19 @@ public class HomeActivity extends AppCompatActivity
 
     private void init() {
         test_me = (Button) findViewById(R.id.test_me);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         test_me.setOnClickListener(new View.OnClickListener() {
             int count =0;
             @Override
@@ -153,4 +150,38 @@ public class HomeActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-}
+
+    @Override
+    public void setUpActionBarDrawer() {
+        toggle = new ActionBarDrawerToggle(
+                this,                  /* host Activity */
+                drawer,         /* DrawerLayout object */
+                R.string.navigation_drawer_open,  /* "open drawer" description */
+                R.string.navigation_drawer_close  /* "close drawer" description */
+        ) {
+
+            /**
+             * Called when a drawer has settled in a completely closed state.
+             */
+            public void onDrawerClosed(View view) {
+                //  Snackbar.make(view, R.string.drawer_close, Snackbar.LENGTH_SHORT).show();
+//                if(navigationDrawerFragment != null){
+//                    navigationDrawerFragment.closeNavDrawerMenu();
+//
+//                }
+            }
+
+            /**
+             * Called when a drawer has settled in a completely open state.
+             */
+            public void onDrawerOpened(View drawerView) {
+
+            }
+        };
+        drawer.setDrawerListener(toggle);
+
+    }
+
+
+    }
+

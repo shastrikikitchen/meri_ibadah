@@ -9,5 +9,8 @@
     <string name="nav_cure">Cure from Quraan</string>
     <string name="cure_desc">Cure your problems/disease with the help Quraan</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>

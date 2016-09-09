@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/MeriIbadath.iml" filepath="$PROJECT_DIR$/MeriIbadath.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/meri_ibadah.iml" filepath="$PROJECT_DIR$/meri_ibadah.iml" />
     </modules>

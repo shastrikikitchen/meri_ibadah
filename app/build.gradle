@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.0"
@@ -26,17 +27,56 @@ android {
         incremental true
         javaMaxHeapSize "4g"
     }
+
     buildTypes {
         release {
-            minifyEnabled false
+            // signingConfig signingConfigs.prodkey
+            buildConfigField "boolean", "PRODUCTION_BUILD", "true"
+            minifyEnabled true
+            debuggable false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            zipAlignEnabled true
         }
+
+        prerelease {
+            //signingConfig signingConfigs.prodkey
+            buildConfigField "boolean", "PRODUCTION_BUILD", "false"
+            minifyEnabled true
+            debuggable true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            zipAlignEnabled true
+        }
+
+        debug {
+            buildConfigField "boolean", "PRODUCTION_BUILD", "false"
+
+            //signingConfig signingConfigs.prodkey
+            debuggable true
+            zipAlignEnabled false
+            testCoverageEnabled = true //flag to generate for code coverage report
+        }
+    }
+    defaultConfig {
+        applicationId "com.shastrikikitchen.meriibadah"
+        minSdkVersion 14
+        targetSdkVersion 23
+        versionCode 1
+        versionName '1.0'
+        // Enabling multidex support.
+        multiDexEnabled true
+        buildConfigField "boolean", "PRODUCTION_BUILD", "false"
+        vectorDrawables.useSupportLibrary = true
+    }
+    dexOptions {
+        incremental true
+        javaMaxHeapSize "4g"
     }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.1.0'
-    compile 'com.android.support:design:23.1.0'
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:design:23.4.0'
+    compile 'com.android.support:support-v4:23.4.0'
 }
