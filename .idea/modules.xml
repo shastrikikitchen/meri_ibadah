@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/MeriIbadath.iml" filepath="$PROJECT_DIR$/MeriIbadath.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/meri_ibadah.iml" filepath="$PROJECT_DIR$/meri_ibadah.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mylib/mylib.iml" filepath="$PROJECT_DIR$/mylib/mylib.iml" />
     </modules>
   </component>
 </project>
